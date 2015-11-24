@@ -8,12 +8,12 @@ var userArr = [
 		password: 'dthyc'
 	}
 ]
-return userArr;
 
-var login = function(username, password) {
+var index = function(params) {
 	for (var i in userArr) {
-		if ( userArr[i].username == username ) {
-			if ( userArr[i].password == password ) {
+		if ( userArr[i].username == params.username ) {
+			if ( userArr[i].password == params.password ) {
+				console.log('login success');
 				return true;
 			}
 			else {
@@ -27,4 +27,4 @@ var login = function(username, password) {
 	return false;
 }
 
-exports.login = login;
+exports.index = index;

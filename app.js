@@ -1,5 +1,5 @@
 var app = require('express');
-var factory = require('./factory');
+var router = require('./router');
 
 
 var ws = require("nodejs-websocket");
@@ -10,7 +10,7 @@ var server = ws.createServer(function(conn){
     conn.on("text", function (str) {
         var dataArr = JSON.parse(str);
         if ( dataArr ) {
-            factory.factory(conn, dataArr);
+            router.router(conn, dataArr);
         }
         console.log("收到的信息为:"+str)
         conn.sendText(str)
