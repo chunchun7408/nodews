@@ -1,5 +1,3 @@
-var controller = require('./login');
-
 var router = function (conn, data) {
 	var controller_str = data.class;
 	if ( ! controller_str ) {
