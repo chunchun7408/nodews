@@ -11,8 +11,8 @@ var userArr = [
 
 var index = function(params) {
 	for (var i in userArr) {
-		if ( userArr[i].username == params.username ) {
-			if ( userArr[i].password == params.password ) {
+		if ( userArr[i].username == params.accountName ) {
+			if ( userArr[i].password == params.pwd ) {
 				console.log('login success');
 				return true;
 			}
