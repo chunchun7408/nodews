@@ -1,20 +1,27 @@
 var resData;
+var cmdId = "";
 
 var response = function (conn) {
 	conn.sendText(JSON.stringify(resData));
+}
+
+var setCmdId = function (id) {
+	cmdId = id;
 }
 
 var setSuccess = function (conn, data) {
 	resData = {};
 	resData.code = 200;
 	resData.data = data || {};
+	resData.cmdId = cmdId;
 	response(conn);
 }
 
-var setError = function (conn, code, msg) {
+var setError = function (conn, msg, code) {
 	resData = {};
-	resData.code = 0;
-	resData.msg = msg || resData.msg;
+	resData.code = code || 0;
+	resData.msg = msg || "";
+	resData.cmdId = cmdId;
 	response(conn);
 }
 

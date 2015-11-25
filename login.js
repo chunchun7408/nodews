@@ -1,3 +1,5 @@
+var result = require('./result');
+
 var userArr = [
 	{
 		username: 'dtsx',
@@ -14,22 +16,25 @@ var userArr = [
 ]
 
 var index = function(conn, params) {
+	result.cmdId = params._cmdId;
 	for (var i in userArr) {
 		if ( userArr[i].username == params.accountName ) {
 			if ( userArr[i].password == params.pwd ) {
-				var result = require('result');
 				result.setSuccess(conn, {nickname: userArr[i].nickname, avatar: userArr[i].avatar});
 				console.log('login success');
 				return true;
 			}
 			else {
 				result.setError(conn, '密码错误！');
+				console.log('密码错误！');
+				return false;
 			}
-		}
-		else {
-			result.setError(conn, '用户不存在！');
+			break;
 		}
 	}
+		
+	result.setError(conn, '用户不存在！');
+	console.log('用户不存在！');
 	return false;
 }
 
