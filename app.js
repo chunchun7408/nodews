@@ -8,11 +8,11 @@ console.log("开始建立连接...")
 var game1 = null,game2 = null , game1Ready = false , game2Ready = false;
 var server = ws.createServer(function(conn){
     conn.on("text", function (str) {
+        console.log("收到的信息为:"+str)
         var dataArr = JSON.parse(str);
         if ( dataArr ) {
             router.router(conn, dataArr);
         }
-        console.log("收到的信息为:"+str)
         
     })
     conn.on("close", function (code, reason) {

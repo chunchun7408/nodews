@@ -27,7 +27,7 @@ var setError = function (conn, msg, code) {
 
 module.exports.setSuccess = setSuccess;
 module.exports.setError = setError;
-// module.exports.response = response;
+module.exports.setCmdId = setCmdId;
 module.exports.codeObj = {
 	error: 0,
 	notlogin: -200
