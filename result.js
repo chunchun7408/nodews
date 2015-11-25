@@ -1,24 +1,27 @@
-var resData = {
-	code: 0,
-	msg: '',
-	data: {}
-}
-
-var set = function (code, data, msg) {
-	resData.code = code || resData.code;
-	resData.data = data || resData.data;
-	resData.msg = msg || resData.msg;
-}
+var resData;
 
 var response = function (conn) {
-	return resData;
 	conn.sendText(JSON.stringify(resData));
 }
 
-module.exports.set = set;
-module.exports.response = response;
+var setSuccess = function (conn, data) {
+	resData = {};
+	resData.code = 200;
+	resData.data = data || {};
+	response(conn);
+}
+
+var setError = function (conn, code, msg) {
+	resData = {};
+	resData.code = 0;
+	resData.msg = msg || resData.msg;
+	response(conn);
+}
+
+module.exports.setSuccess = setSuccess;
+module.exports.setError = setError;
+// module.exports.response = response;
 module.exports.codeObj = {
-	success: 200,
 	error: 0,
 	notlogin: -200
 }

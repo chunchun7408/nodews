@@ -13,7 +13,7 @@ var server = ws.createServer(function(conn){
             router.router(conn, dataArr);
         }
         console.log("收到的信息为:"+str)
-        conn.sendText(str)
+        
     })
     conn.on("close", function (code, reason) {
         console.log("关闭连接")
